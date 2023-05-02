@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://djcerb7pa5vkv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y87y1"]
+
+[node name="GUI" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BirdCoinCount" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "0"
+label_settings = SubResource("LabelSettings_y87y1")

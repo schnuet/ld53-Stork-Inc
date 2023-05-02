@@ -1,0 +1,312 @@
+[gd_scene load_steps=8 format=3 uid="uid://caf7t3fd5i80c"]
+
+[ext_resource type="Script" path="res://gui/day_end_popup.gd" id="1_0covb"]
+[ext_resource type="LabelSettings" uid="uid://ccrc5drs0nt3v" path="res://gui/titles_1.tres" id="1_0tnoh"]
+[ext_resource type="LabelSettings" uid="uid://bxoy805gkpher" path="res://gui/label_settings_small.tres" id="2_sjpbb"]
+[ext_resource type="Texture2D" uid="uid://bbl720q0m588y" path="res://images/birdcoin.PNG" id="3_mgjcb"]
+[ext_resource type="LabelSettings" uid="uid://ditbrm271efp8" path="res://gui/label_settings_medium.tres" id="4_7sfwl"]
+[ext_resource type="PackedScene" uid="uid://bbpjdrfn7calm" path="res://scenes/worker_image.tscn" id="5_r5ank"]
+[ext_resource type="Theme" uid="uid://dd2xtxl27npqh" path="res://gui/theme.tres" id="6_gn0gp"]
+
+[node name="DayEndPopup" type="Panel"]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(1180, 0)
+offset_left = 46.0
+offset_top = 60.0
+offset_right = 1226.0
+offset_bottom = 660.0
+script = ExtResource("1_0covb")
+
+[node name="DayEnd" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -383.0
+offset_top = -134.0
+offset_right = -343.0
+offset_bottom = -94.0
+grow_horizontal = 2
+rotation = -0.0900773
+metadata/_edit_group_ = true
+
+[node name="Title" type="Label" parent="DayEnd"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -195.0
+offset_top = 152.0
+offset_right = 178.0
+offset_bottom = 243.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "End of the day"
+label_settings = ExtResource("1_0tnoh")
+
+[node name="Babies" type="Control" parent="DayEnd"]
+anchors_preset = 0
+offset_left = -521.929
+offset_top = -46.541
+offset_right = -481.929
+offset_bottom = -6.54096
+
+[node name="BabiesDeliveredTitle" type="Label" parent="DayEnd/Babies"]
+layout_mode = 2
+offset_left = 364.019
+offset_top = 305.217
+offset_right = 540.019
+offset_bottom = 343.217
+size_flags_horizontal = 0
+text = "Babies delivered:"
+label_settings = ExtResource("2_sjpbb")
+
+[node name="BabiesDeliveredResult" type="Label" parent="DayEnd/Babies"]
+layout_mode = 2
+offset_left = 553.0
+offset_top = 304.0
+offset_right = 563.0
+offset_bottom = 330.0
+text = "0"
+label_settings = ExtResource("2_sjpbb")
+
+[node name="BabyBonus" type="Control" parent="DayEnd/Babies"]
+anchors_preset = 0
+offset_left = 578.0
+offset_top = 308.0
+offset_right = 618.0
+offset_bottom = 348.0
+rotation = -0.321441
+
+[node name="Sprite2D" type="Sprite2D" parent="DayEnd/Babies/BabyBonus"]
+position = Vector2(34, 12)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_mgjcb")
+
+[node name="Label" type="Label" parent="DayEnd/Babies/BabyBonus"]
+layout_mode = 0
+offset_left = -19.0
+offset_top = -3.0
+offset_right = 21.0
+offset_bottom = 28.0
+text = "+5"
+label_settings = ExtResource("2_sjpbb")
+horizontal_alignment = 2
+
+[node name="EarnedToday" type="Control" parent="DayEnd"]
+anchors_preset = 0
+offset_left = -521.93
+offset_top = 2.45905
+offset_right = -481.93
+offset_bottom = 42.4591
+metadata/_edit_group_ = true
+
+[node name="title" type="Label" parent="DayEnd/EarnedToday"]
+layout_mode = 2
+offset_left = 364.019
+offset_top = 288.217
+offset_right = 516.019
+offset_bottom = 326.217
+text = "Earned today: "
+label_settings = ExtResource("2_sjpbb")
+
+[node name="result" type="Label" parent="DayEnd/EarnedToday"]
+layout_mode = 2
+offset_left = 553.0
+offset_top = 287.0
+offset_right = 563.0
+offset_bottom = 313.0
+text = "0"
+label_settings = ExtResource("2_sjpbb")
+
+[node name="Costs" type="Control" parent="DayEnd"]
+anchors_preset = 0
+offset_left = -521.93
+offset_top = 17.4591
+offset_right = -481.93
+offset_bottom = 57.4591
+
+[node name="EmployeeCostsTitle" type="Label" parent="DayEnd/Costs"]
+layout_mode = 2
+offset_left = 364.019
+offset_top = 305.217
+offset_right = 531.019
+offset_bottom = 343.217
+size_flags_horizontal = 0
+text = "Employee costs:"
+label_settings = ExtResource("2_sjpbb")
+
+[node name="EmployeeCostsResult" type="Label" parent="DayEnd/Costs"]
+layout_mode = 2
+offset_left = 553.0
+offset_top = 304.0
+offset_right = 563.0
+offset_bottom = 330.0
+text = "0"
+label_settings = ExtResource("2_sjpbb")
+
+[node name="Total" type="Control" parent="DayEnd"]
+anchors_preset = 0
+offset_left = -49.9294
+offset_top = 413.459
+offset_right = -9.92944
+offset_bottom = 453.459
+metadata/_edit_group_ = true
+
+[node name="TotalEarnedToday" type="Label" parent="DayEnd/Total"]
+layout_mode = 0
+offset_left = -93.0
+offset_top = -36.0
+offset_right = 90.0
+offset_bottom = -5.0
+size_flags_horizontal = 0
+text = "Total earned today"
+label_settings = ExtResource("2_sjpbb")
+
+[node name="result" type="Label" parent="DayEnd/Total"]
+layout_mode = 0
+offset_left = 0.484253
+offset_top = -1.64957
+offset_right = 51.4843
+offset_bottom = 45.3504
+text = "+10"
+label_settings = ExtResource("4_7sfwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="DayEnd/Total"]
+position = Vector2(-33.9884, 26.1495)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_mgjcb")
+
+[node name="EmployeeManagement" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 179.0
+offset_top = -582.0
+offset_right = 219.0
+offset_bottom = -542.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 0.0281594
+
+[node name="Label" type="Label" parent="EmployeeManagement"]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -27.0
+offset_right = 265.0
+offset_bottom = 64.0
+text = "Employees"
+label_settings = ExtResource("1_0tnoh")
+
+[node name="WorkerImage" parent="EmployeeManagement" instance=ExtResource("5_r5ank")]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 89.0
+offset_right = 44.0
+offset_bottom = 159.0
+rotation = 0.0881322
+worker_name = 1
+
+[node name="WorkerImage2" parent="EmployeeManagement" instance=ExtResource("5_r5ank")]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 90.0
+offset_right = 130.0
+offset_bottom = 160.0
+
+[node name="WorkerImage3" parent="EmployeeManagement" instance=ExtResource("5_r5ank")]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 99.0
+offset_right = 215.0
+offset_bottom = 169.0
+
+[node name="WorkerImage4" parent="EmployeeManagement" instance=ExtResource("5_r5ank")]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 85.0
+offset_right = 302.0
+offset_bottom = 155.0
+
+[node name="WorkerImage6" parent="EmployeeManagement" instance=ExtResource("5_r5ank")]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 210.0
+offset_right = 47.0
+offset_bottom = 280.0
+rotation = 0.0512474
+
+[node name="WorkerImage7" parent="EmployeeManagement" instance=ExtResource("5_r5ank")]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 219.0
+offset_right = 125.0
+offset_bottom = 289.0
+rotation = -0.060876
+
+[node name="WorkerImage8" parent="EmployeeManagement" instance=ExtResource("5_r5ank")]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 225.0
+offset_right = 213.0
+offset_bottom = 295.0
+rotation = 0.0226931
+
+[node name="WorkerImage9" parent="EmployeeManagement" instance=ExtResource("5_r5ank")]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 218.0
+offset_right = 294.0
+offset_bottom = 288.0
+rotation = -0.0657627
+
+[node name="NextDay" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="Seperator" type="Polygon2D" parent="NextDay"]
+position = Vector2(543, 26)
+polygon = PackedVector2Array(-496, 366, 28, 325, 524, 370, 525, 379, 28, 333, -496, 374)
+
+[node name="Title" type="Label" parent="NextDay"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 390.0
+offset_top = 350.0
+offset_right = 763.0
+offset_bottom = 441.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Next Day"
+label_settings = ExtResource("1_0tnoh")
+horizontal_alignment = 1
+
+[node name="NextDayButton" type="Button" parent="NextDay"]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 526.0
+offset_right = 662.0
+offset_bottom = 566.0
+theme = ExtResource("6_gn0gp")
+text = "Start next day"
+
+[node name="Visits" type="Control" parent="NextDay"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VisitsTitle" type="Label" parent="NextDay/Visits"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 411.0
+offset_right = 310.0
+offset_bottom = 444.0
+text = "Visits anounced!"
+label_settings = ExtResource("2_sjpbb")

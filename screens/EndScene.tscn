@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1ol2dmvgqfvm"]
+
+[ext_resource type="Script" path="res://screens/EndScene.gd" id="1_odupv"]
+[ext_resource type="FontFile" uid="uid://bby7breuoihqa" path="res://gui/DarumadropOne-Regular.ttf" id="2_e3xap"]
+[ext_resource type="Texture2D" uid="uid://3tehohrhspoi" path="res://screens/Intro_Office.png" id="2_y55wv"]
+[ext_resource type="Texture2D" uid="uid://civrbbpgtkpea" path="res://images/gramps/gramps_happy.png" id="3_j7y31"]
+[ext_resource type="Texture2D" uid="uid://dwu2efqkvlvd7" path="res://images/gramps/gramps_scream.png" id="4_e6rsr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jl2il"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_j7y31")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_e6rsr")
+}],
+"loop": true,
+"name": &"scream",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0byds"]
+font = ExtResource("2_e3xap")
+font_size = 42
+
+[node name="EndScene" type="Node2D"]
+script = ExtResource("1_odupv")
+
+[node name="IntroOffice" type="Sprite2D" parent="."]
+texture = ExtResource("2_y55wv")
+centered = false
+flip_h = true
+
+[node name="Gramps" type="AnimatedSprite2D" parent="."]
+position = Vector2(1003, 474)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_jl2il")
+animation = &"normal"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 28.0
+offset_top = 497.0
+offset_right = 1001.0
+offset_bottom = 687.0
+
+[node name="Speech" type="Label" parent="."]
+offset_left = 75.0
+offset_top = 524.0
+offset_right = 972.0
+offset_bottom = 654.0
+text = "We get Birdcoins for every baby! The more, the better. We have to pay our birds, after all."
+label_settings = SubResource("LabelSettings_0byds")
+autowrap_mode = 2
+visible_characters_behavior = 1

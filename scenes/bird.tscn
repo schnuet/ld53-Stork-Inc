@@ -1,0 +1,132 @@
+[gd_scene load_steps=22 format=3 uid="uid://bggle8o2l41nh"]
+
+[ext_resource type="Script" path="res://scenes/bird.gd" id="1_78uug"]
+[ext_resource type="Texture2D" uid="uid://bswpnt8yog30c" path="res://images/bird/vogel0000.png" id="2_answ0"]
+[ext_resource type="Texture2D" uid="uid://bjcjtyc25j7ey" path="res://images/bird/vogel0001.png" id="3_j6k6v"]
+[ext_resource type="Texture2D" uid="uid://c7rsusnqpjam0" path="res://images/bird/vogel0002.png" id="4_xbfoq"]
+[ext_resource type="Texture2D" uid="uid://i2uk10m1dpu5" path="res://images/bird/vogel0003.png" id="5_j5uc6"]
+[ext_resource type="Texture2D" uid="uid://dymkq1sumqcpm" path="res://images/bird/vogel0004.png" id="6_634iq"]
+[ext_resource type="Texture2D" uid="uid://b2xbw627e6wms" path="res://images/bird/vogel0005.png" id="7_xhqsr"]
+[ext_resource type="Texture2D" uid="uid://ysv0hhf715h" path="res://images/bird/vogel0006.png" id="8_l625o"]
+[ext_resource type="Texture2D" uid="uid://bkldqxx5ws476" path="res://images/icons/circle.svg" id="9_buj6x"]
+[ext_resource type="Texture2D" uid="uid://b2c7j2jcxhj78" path="res://images/bird/Korb.png" id="9_tg57b"]
+[ext_resource type="Texture2D" uid="uid://bm8td1bkpgegg" path="res://images/hats/Bob.png" id="10_bd0to"]
+[ext_resource type="AudioStream" uid="uid://cu26ssrhuo8hr" path="res://sound/baby_dropoff.wav" id="11_1tqpu"]
+[ext_resource type="Texture2D" uid="uid://d4nyrqbeio618" path="res://images/hats/Brille.png" id="11_52o5d"]
+[ext_resource type="AudioStream" uid="uid://byn53qxwtfwip" path="res://sound/animal_baby.wav" id="12_fp42g"]
+[ext_resource type="Texture2D" uid="uid://c5lh5yg0dvcsi" path="res://images/hats/Edoardo Hut.png" id="12_hfyjy"]
+[ext_resource type="Texture2D" uid="uid://dp0t6s3a2xpmy" path="res://images/hats/Gaga Hair.png" id="13_i0boq"]
+[ext_resource type="Texture2D" uid="uid://d3jolxk6spajf" path="res://images/hats/Rose Blume.png" id="14_3b5yu"]
+[ext_resource type="Texture2D" uid="uid://b6cccikm4flpe" path="res://images/hats/Sir Bings. Zylinder.png" id="15_6gn2f"]
+[ext_resource type="Texture2D" uid="uid://baoga17amfiyi" path="res://images/hats/Sunny Strohut.png" id="16_6x5bu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qv3yc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_answ0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j6k6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xbfoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j5uc6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_634iq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xhqsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_l625o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b75v8"]
+radius = 40.0
+
+[node name="Bird" type="Area2D" groups=["bird"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_78uug")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_qv3yc")
+
+[node name="Korb" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+position = Vector2(-600, 140)
+scale = Vector2(4, 4)
+texture = ExtResource("9_tg57b")
+
+[node name="Hat" type="Node2D" parent="AnimatedSprite2D"]
+position = Vector2(0, 20)
+
+[node name="bob" type="Sprite2D" parent="AnimatedSprite2D/Hat"]
+visible = false
+position = Vector2(-1, -27)
+texture = ExtResource("10_bd0to")
+
+[node name="harvey" type="Sprite2D" parent="AnimatedSprite2D/Hat"]
+visible = false
+position = Vector2(0, -20)
+texture = ExtResource("11_52o5d")
+
+[node name="eduardo" type="Sprite2D" parent="AnimatedSprite2D/Hat"]
+visible = false
+position = Vector2(-5, -20)
+texture = ExtResource("12_hfyjy")
+
+[node name="gaga" type="Sprite2D" parent="AnimatedSprite2D/Hat"]
+visible = false
+position = Vector2(-1, -27)
+texture = ExtResource("13_i0boq")
+
+[node name="rose" type="Sprite2D" parent="AnimatedSprite2D/Hat"]
+visible = false
+position = Vector2(-1, -27)
+texture = ExtResource("14_3b5yu")
+
+[node name="bringsitnow" type="Sprite2D" parent="AnimatedSprite2D/Hat"]
+visible = false
+position = Vector2(-1, -27)
+texture = ExtResource("15_6gn2f")
+
+[node name="sunny" type="Sprite2D" parent="AnimatedSprite2D/Hat"]
+visible = false
+position = Vector2(-1, -27)
+texture = ExtResource("16_6x5bu")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_b75v8")
+debug_color = Color(0.682353, 0.701961, 0.670588, 0.419608)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Circle" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_buj6x")
+
+[node name="DropoffSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_1tqpu")
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_fp42g")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

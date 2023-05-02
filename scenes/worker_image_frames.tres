@@ -1,0 +1,86 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://d1vbk2ujt5nbb"]
+
+[ext_resource type="Texture2D" uid="uid://cgcguxir7pvac" path="res://images/worker_photos/Bob.png" id="1_kla3y"]
+[ext_resource type="Texture2D" uid="uid://load4uq1fqq2" path="res://images/worker_photos/transparent.png" id="2_j8mqd"]
+[ext_resource type="Texture2D" uid="uid://cv6mksjkavkn8" path="res://images/worker_photos/Sir Bringsitnow.png" id="2_rueho"]
+[ext_resource type="Texture2D" uid="uid://jftn6tae5mg4" path="res://images/worker_photos/stork_profile_1.png" id="3_45773"]
+[ext_resource type="Texture2D" uid="uid://cvhamyj008lj6" path="res://images/worker_photos/Eduardo.png" id="3_agy7y"]
+[ext_resource type="Texture2D" uid="uid://dmocg3cnoeeam" path="res://images/worker_photos/Gaga.png" id="4_xcypc"]
+[ext_resource type="Texture2D" uid="uid://djtcugoaomqep" path="res://images/worker_photos/harvey.png" id="5_cy2mx"]
+[ext_resource type="Texture2D" uid="uid://dxgaxclbk0yf8" path="res://images/worker_photos/Rose.png" id="7_3265d"]
+[ext_resource type="Texture2D" uid="uid://cd2q7cf2x2h1x" path="res://images/worker_photos/Sunny.png" id="9_wcj86"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kla3y")
+}],
+"loop": true,
+"name": &"bob",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rueho")
+}],
+"loop": true,
+"name": &"bringsitnow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_agy7y")
+}],
+"loop": true,
+"name": &"eduardo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xcypc")
+}],
+"loop": true,
+"name": &"gaga",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cy2mx")
+}],
+"loop": true,
+"name": &"harvey",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j8mqd")
+}],
+"loop": true,
+"name": &"none",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3265d")
+}],
+"loop": true,
+"name": &"rose",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_45773")
+}],
+"loop": true,
+"name": &"stan",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_wcj86")
+}],
+"loop": true,
+"name": &"sunny",
+"speed": 5.0
+}]

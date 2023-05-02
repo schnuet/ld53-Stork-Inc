@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bbpjdrfn7calm"]
+
+[ext_resource type="Texture2D" uid="uid://clknh32oc2n7n" path="res://images/rahmen/rahmen_bg.png" id="1_08hqj"]
+[ext_resource type="Script" path="res://scenes/worker_image.gd" id="1_eceqm"]
+[ext_resource type="FontFile" uid="uid://bby7breuoihqa" path="res://gui/DarumadropOne-Regular.ttf" id="1_edmpy"]
+[ext_resource type="Texture2D" uid="uid://bgh6hk44h2nrx" path="res://images/rahmen/rahmen.png" id="2_smft8"]
+[ext_resource type="SpriteFrames" uid="uid://d1vbk2ujt5nbb" path="res://scenes/worker_image_frames.tres" id="3_76qtn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rsdhq"]
+font = ExtResource("1_edmpy")
+font_size = 26
+font_color = Color(0.270588, 0.294118, 0.298039, 1)
+
+[node name="WorkerImage" type="Button"]
+custom_minimum_size = Vector2(50, 70)
+offset_right = 50.0
+offset_bottom = 70.0
+flat = true
+script = ExtResource("1_eceqm")
+
+[node name="RahmenBg" type="Sprite2D" parent="."]
+position = Vector2(23.3, 34)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_08hqj")
+
+[node name="WorkerPhoto" type="AnimatedSprite2D" parent="."]
+position = Vector2(23, 41)
+scale = Vector2(0.145269, 0.14)
+sprite_frames = ExtResource("3_76qtn")
+animation = &"none"
+
+[node name="Rahmen" type="Sprite2D" parent="."]
+position = Vector2(23.3, 34)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_smft8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 4.0
+offset_right = 83.0
+offset_bottom = 51.0
+rotation = 0.932248
+text = "Hire"
+label_settings = SubResource("LabelSettings_rsdhq")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

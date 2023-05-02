@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://dhk2djqpfh5aa"]
+
+[ext_resource type="Script" path="res://scenes/marker.gd" id="1_7mphw"]
+[ext_resource type="Texture2D" uid="uid://13ibwi353kxv" path="res://images/icons/marker.svg" id="2_qo556"]
+[ext_resource type="Texture2D" uid="uid://o4k6xspxgr44" path="res://images/icons/baer_icon.png" id="4_vg5w2"]
+[ext_resource type="Texture2D" uid="uid://dnodktv7tpos6" path="res://images/icons/katze_icon.png" id="5_brqrs"]
+[ext_resource type="Texture2D" uid="uid://berymjrabw726" path="res://images/icons/fuchs_icon.png" id="7_3k0wb"]
+[ext_resource type="Texture2D" uid="uid://c36fmx38muj3f" path="res://images/icons/ziege_icon.png" id="9_78bm0"]
+[ext_resource type="Texture2D" uid="uid://c5piy4mekv6re" path="res://images/icons/marker2.svg" id="9_r14oc"]
+[ext_resource type="Texture2D" uid="uid://bw6dmr8enweh2" path="res://images/icons/hund_icon.png" id="11_thte5"]
+[ext_resource type="Texture2D" uid="uid://dobt82wh1c0fo" path="res://images/icons/hase_icon.png" id="12_ohj6a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4noh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_r14oc")
+}],
+"loop": true,
+"name": &"end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qo556")
+}],
+"loop": true,
+"name": &"start",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61yg3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vg5w2")
+}],
+"loop": true,
+"name": &"bear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_brqrs")
+}],
+"loop": true,
+"name": &"cat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_thte5")
+}],
+"loop": true,
+"name": &"dog",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3k0wb")
+}],
+"loop": true,
+"name": &"fox",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ohj6a")
+}],
+"loop": true,
+"name": &"rabbit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_78bm0")
+}],
+"loop": true,
+"name": &"sheep",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dyw24"]
+radius = 28.0
+
+[node name="marker" type="Area2D" groups=["marker"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_7mphw")
+
+[node name="MarkerImage" type="AnimatedSprite2D" parent="."]
+clip_children = 2
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_w4noh")
+animation = &"start"
+
+[node name="CustomIcon" type="AnimatedSprite2D" parent="MarkerImage"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_61yg3")
+animation = &"sheep"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dyw24")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

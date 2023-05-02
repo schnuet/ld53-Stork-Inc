@@ -1,0 +1,221 @@
+[gd_scene load_steps=8 format=3 uid="uid://oochqs5snpkt"]
+
+[ext_resource type="Texture2D" uid="uid://c6nhvlyr75ucq" path="res://images/papiertextur_farbe.png" id="1_dltka"]
+[ext_resource type="Script" path="res://screens/ResultsScreen.gd" id="1_s4lcd"]
+[ext_resource type="FontFile" uid="uid://bby7breuoihqa" path="res://gui/DarumadropOne-Regular.ttf" id="2_rowwo"]
+[ext_resource type="Theme" uid="uid://dd2xtxl27npqh" path="res://gui/theme.tres" id="3_n5q6d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ptuwb"]
+font = ExtResource("2_rowwo")
+font_size = 65
+
+[sub_resource type="LabelSettings" id="LabelSettings_0eyrb"]
+font = ExtResource("2_rowwo")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_ytap0"]
+font = ExtResource("2_rowwo")
+font_size = 35
+
+[node name="ResultsScreen" type="Node2D"]
+script = ExtResource("1_s4lcd")
+
+[node name="PapiertexturFarbe" type="Sprite2D" parent="."]
+position = Vector2(696, 404)
+texture = ExtResource("1_dltka")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Title" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -176.0
+offset_top = 68.0
+offset_right = 176.0
+offset_bottom = 159.0
+grow_horizontal = 2
+text = "Week Results"
+label_settings = SubResource("LabelSettings_ptuwb")
+
+[node name="Babies" type="Control" parent="Control"]
+custom_minimum_size = Vector2(500, 70)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 390.0
+offset_top = 214.0
+offset_right = 890.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="Control/Babies"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -31.0
+offset_right = 287.0
+offset_bottom = 31.0
+grow_vertical = 2
+text = "Babies delivered"
+label_settings = SubResource("LabelSettings_0eyrb")
+
+[node name="result" type="Label" parent="Control/Babies"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -26.0
+offset_right = -1.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ytap0")
+horizontal_alignment = 2
+
+[node name="Workers" type="Control" parent="Control"]
+custom_minimum_size = Vector2(400, 70)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 390.0
+offset_top = 288.0
+offset_right = 890.0
+offset_bottom = 358.0
+
+[node name="title" type="Label" parent="Control/Workers"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -31.0
+offset_right = 287.0
+offset_bottom = 31.0
+grow_vertical = 2
+text = "Workers hired"
+label_settings = SubResource("LabelSettings_0eyrb")
+
+[node name="result" type="Label" parent="Control/Workers"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -26.0
+offset_right = -1.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0 / 10"
+label_settings = SubResource("LabelSettings_ytap0")
+horizontal_alignment = 2
+
+[node name="Income" type="Control" parent="Control"]
+custom_minimum_size = Vector2(400, 70)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 390.0
+offset_top = 362.0
+offset_right = 890.0
+offset_bottom = 432.0
+
+[node name="title" type="Label" parent="Control/Income"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -31.0
+offset_right = 287.0
+offset_bottom = 31.0
+grow_vertical = 2
+text = "Total income"
+label_settings = SubResource("LabelSettings_0eyrb")
+
+[node name="result" type="Label" parent="Control/Income"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -26.0
+offset_right = -1.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ytap0")
+horizontal_alignment = 2
+
+[node name="Expenses" type="Control" parent="Control"]
+custom_minimum_size = Vector2(400, 70)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 390.0
+offset_top = 436.0
+offset_right = 890.0
+offset_bottom = 506.0
+
+[node name="title" type="Label" parent="Control/Expenses"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -31.0
+offset_right = 287.0
+offset_bottom = 31.0
+grow_vertical = 2
+text = "Total expenses"
+label_settings = SubResource("LabelSettings_0eyrb")
+
+[node name="result" type="Label" parent="Control/Expenses"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -26.0
+offset_right = -1.0
+offset_bottom = 29.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ytap0")
+horizontal_alignment = 2
+
+[node name="ContinueButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.5
+offset_top = -142.0
+offset_right = 55.5
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_n5q6d")
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[connection signal="pressed" from="Control/ContinueButton" to="." method="_on_continue_button_pressed"]

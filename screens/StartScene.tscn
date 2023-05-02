@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://do42mk4be24ko"]
+
+[ext_resource type="Script" path="res://screens/StartScene.gd" id="1_iwt4h"]
+[ext_resource type="Texture2D" uid="uid://dgvj8uq08u1ag" path="res://images/stork_inc_startscreen_background.png" id="2_b4i64"]
+[ext_resource type="Theme" uid="uid://dd2xtxl27npqh" path="res://gui/theme.tres" id="2_vt1h5"]
+[ext_resource type="Texture2D" uid="uid://qayi0ysf3gag" path="res://images/stork_inc_logo.png" id="4_1rsri"]
+
+[node name="StartScene" type="Node2D"]
+script = ExtResource("1_iwt4h")
+
+[node name="StorkIncStartscreenBackground" type="Sprite2D" parent="."]
+position = Vector2(618, 361)
+scale = Vector2(1.05248, 1.05248)
+texture = ExtResource("2_b4i64")
+metadata/_edit_lock_ = true
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 54.0
+offset_top = 460.0
+offset_right = 324.0
+offset_bottom = 524.0
+theme = ExtResource("2_vt1h5")
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="CreditsButton" type="Button" parent="."]
+offset_left = 54.0
+offset_top = 544.0
+offset_right = 324.0
+offset_bottom = 608.0
+theme = ExtResource("2_vt1h5")
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+
+[node name="StorkIncLogo" type="Sprite2D" parent="."]
+position = Vector2(223, 224.475)
+scale = Vector2(0.273117, 0.273117)
+texture = ExtResource("4_1rsri")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
