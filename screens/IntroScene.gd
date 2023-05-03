@@ -102,6 +102,8 @@ var lines = [
 		"lines": ["GOOD LUCK!"]
 	},
 ];
+var timer = null;
+var tween = null;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -109,6 +111,13 @@ func _ready():
 	
 	start_game();
 
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.is_pressed():
+		if timer != null and timer.time_left > 0:
+			timer.time_left = 0.0001;
+		elif tween != null and tween.is_running():
+			tween.stop();
+			tween.emit_signal("finished");
 
 func do_dialog():
 	$Panel.show();
@@ -141,11 +150,15 @@ func update_speech(line):
 		var old_text_length = len($Speech.text);
 		var text_length = old_text_length + new_text_length;
 		$Speech.text += text;
-		var tween = await get_tree().create_tween();
+		tween = await get_tree().create_tween();
 		tween.tween_property($Speech, "visible_characters", text_length, new_text_length * 0.03).from(old_text_length);
 		await tween.finished;
-		await get_tree().create_timer(0.3).timeout
-	await get_tree().create_timer(1.5).timeout
+		$Speech.visible_characters = text_length;
+		timer = get_tree().create_timer(0.3)
+		await timer.timeout
+	
+	timer = get_tree().create_timer(1.5);
+	await timer.timeout
 
 func turn_on_light():
 	print("turn_on_lights")
