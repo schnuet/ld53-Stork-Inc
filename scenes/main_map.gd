@@ -12,6 +12,8 @@ var time_of_day = 360;
 
 var first_baby_delivered = false;
 
+@onready var world_map = $NavigationRegion2D/WorldMap;
+
 func _ready():
 	# create_bird();
 	
@@ -28,7 +30,7 @@ func _ready():
 		birds.append(bird);
 		
 	if selected_bird == null:
-		select_bird($NavigationRegion2D/WorldModulate/birds/Bird);
+		select_bird($NavigationRegion2D/birds/Bird);
 	
 	await get_tree().create_timer(2.0).timeout
 	
@@ -50,15 +52,18 @@ func _process(delta):
 		v = remap(time_of_day, 6 * 60, 9.5 * 60, 85, 100);
 	elif (time_of_day > 16 * 60):
 		v = remap(time_of_day, 16 * 60, 18 * 60, 100, 85);
+		
+	var modulate_color = Color.from_hsv(h / 360, s / 100, v / 100);
 	
-	$NavigationRegion2D/WorldModulate.modulate = Color.from_hsv(h / 360, s / 100, v / 100);
+	$NavigationRegion2D/birds.modulate = modulate_color;
+	world_map.modulate = modulate_color;
 	
 	$TimeArea/Sonnenuhr/Zeiger.rotation = remap(time_of_day, 6 * 60, 18 * 60, 0, 6.28319);
 
 func create_bird(bird_name):
 	var bird: Bird = BirdScene.instantiate();
 	bird.bird_name = bird_name;
-	$NavigationRegion2D/WorldModulate/birds.add_child(bird);
+	$NavigationRegion2D/birds.add_child(bird);
 	
 	
 	bird.connect("click", _on_bird_click);

@@ -126,17 +126,10 @@ script = ExtResource("1_y20xl")
 navigation_polygon = SubResource("NavigationPolygon_h50te")
 metadata/_edit_lock_ = true
 
-[node name="WorldModulate" type="Node2D" parent="NavigationRegion2D"]
-
-[node name="Welt01" type="Sprite2D" parent="NavigationRegion2D/WorldModulate"]
+[node name="WorldMap" type="Sprite2D" parent="NavigationRegion2D"]
 scale = Vector2(0.330902, 0.330902)
 texture = ExtResource("2_y3dwu")
 centered = false
-
-[node name="birds" type="Node2D" parent="NavigationRegion2D/WorldModulate"]
-
-[node name="Bird" parent="NavigationRegion2D/WorldModulate/birds" instance=ExtResource("2_qfris")]
-position = Vector2(593, 348)
 
 [node name="BabySpawner" parent="NavigationRegion2D" instance=ExtResource("2_4s0kg")]
 position = Vector2(20, 20)
@@ -175,6 +168,11 @@ visible = false
 position = Vector2(147, 527)
 animal_type = 3
 marker_type = 1
+
+[node name="birds" type="Node2D" parent="NavigationRegion2D"]
+
+[node name="Bird" parent="NavigationRegion2D/birds" instance=ExtResource("2_qfris")]
+position = Vector2(593, 348)
 
 [node name="BirdCoinGUI" type="Control" parent="."]
 layout_mode = 3
@@ -733,9 +731,9 @@ text = "CANCEL"
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_kt7bk")
 
-[connection signal="baby_delivered" from="NavigationRegion2D/WorldModulate/birds/Bird" to="." method="_on_bird_baby_delivered"]
-[connection signal="click" from="NavigationRegion2D/WorldModulate/birds/Bird" to="." method="_on_bird_click"]
 [connection signal="marker_spawned" from="NavigationRegion2D/BabySpawner" to="." method="_on_baby_spawner_marker_spawned"]
+[connection signal="baby_delivered" from="NavigationRegion2D/birds/Bird" to="." method="_on_bird_baby_delivered"]
+[connection signal="click" from="NavigationRegion2D/birds/Bird" to="." method="_on_bird_click"]
 [connection signal="timeout" from="TimeArea/TimeTimer" to="." method="_on_time_timer_timeout"]
 [connection signal="click" from="DayEndPopup/EmployeeManagement/WorkerImage" to="." method="_on_worker_image_click"]
 [connection signal="click" from="DayEndPopup/EmployeeManagement/WorkerImage2" to="." method="_on_worker_image_click"]
