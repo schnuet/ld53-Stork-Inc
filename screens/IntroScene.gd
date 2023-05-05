@@ -157,7 +157,7 @@ func update_speech(line):
 		timer = get_tree().create_timer(0.3)
 		await timer.timeout
 	
-	timer = get_tree().create_timer(1.5);
+	timer = get_tree().create_timer(len($Speech.text) * 0.2);
 	await timer.timeout
 
 func turn_on_light():

@@ -189,6 +189,8 @@ func deselect():
 # HANDLE MOUSE CLICKS
 
 func _input(event):
+	if selected:
+		return;
 	if not mouse_inside:
 		return;
 		

@@ -174,9 +174,6 @@ func on_day_end():
 	
 	var baby_bonus = Game.get_baby_bonus();
 	var employee_costs = Game.get_employee_costs();
-	Game.total_gain_today = Game.coins_made_today + baby_bonus - employee_costs;
-	add_to_coins(baby_bonus);
-	add_to_coins(-employee_costs);
 	
 	$DayEndPopup.show();
 	$DayEndPopup/DayEnd.show();
@@ -184,12 +181,22 @@ func on_day_end():
 	
 	update_delivered_babies_label();
 	
+	await get_tree().create_timer(1.0).timeout
+	
+	add_to_coins(baby_bonus);
+	$DayEndPopup/DayEnd/Babies/BabyBonus.show();
+	$DayEndPopup/DayEnd/Babies/BabyBonus/Label.text = "+" + str(Game.get_baby_bonus());
+	
+	Game.total_gain_today = Game.coins_made_today + baby_bonus - employee_costs;
+	
+	
 	await get_tree().create_timer(2.0).timeout
 	
 	update_coins_made_label();
 	await get_tree().create_timer(1.0).timeout
 
 	update_employee_costs_label();
+	add_to_coins(-employee_costs);
 	await get_tree().create_timer(1.0).timeout
 
 	update_total_of_day_label();
@@ -197,6 +204,7 @@ func on_day_end():
 	
 	
 	$DayEndPopup/EmployeeManagement.show();
+	$"DayEndPopup/EmployeeManagement/Click to Hire!/AnimationPlayer".play("bounce");
 	
 	await get_tree().create_timer(3.0).timeout	
 	
@@ -209,11 +217,6 @@ func on_day_end():
 func update_delivered_babies_label():
 	$DayEndPopup/DayEnd/Babies.show();
 	$DayEndPopup/DayEnd/Babies/BabiesDeliveredResult.text = str(Game.babies_delivered_today);
-	
-	await get_tree().create_timer(1.0).timeout
-	
-	$DayEndPopup/DayEnd/Babies/BabyBonus.show();
-	$DayEndPopup/DayEnd/Babies/BabyBonus/Label.text = "+" + str(Game.get_baby_bonus());
 	
 func update_coins_made_label():
 	$DayEndPopup/DayEnd/EarnedToday.show();
@@ -281,6 +284,10 @@ func hide_game_end_panel():
 
 func _on_worker_image_click(worker_panel: Button, worker_name):
 	selected_worker_panel = worker_panel;
+	
+	$DayEndPopup/EmployeeManagement/Arrow.hide();
+	$"DayEndPopup/EmployeeManagement/Click to Hire!".hide();
+	$"DayEndPopup/EmployeeManagement/Click to Hire!/AnimationPlayer".stop();
 	
 	$ClickSound.play();
 	

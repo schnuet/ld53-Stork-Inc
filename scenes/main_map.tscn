@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dimoqqt4yrqb5"]
+[gd_scene load_steps=49 format=3 uid="uid://dimoqqt4yrqb5"]
 
 [ext_resource type="Script" path="res://scenes/main_map.gd" id="1_y20xl"]
 [ext_resource type="PackedScene" uid="uid://jjrk76mahvvy" path="res://scenes/baby_spawner.tscn" id="2_4s0kg"]
@@ -26,9 +26,6 @@ vertices = PackedVector2Array(1280, 0, 1280, 720, 0, 720, 0, 0)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 720, 1280, 720, 1280, 0)])
 
-[sub_resource type="LabelSettings" id="LabelSettings_ih6c6"]
-font_size = 30
-
 [sub_resource type="LabelSettings" id="LabelSettings_1qcnq"]
 font = ExtResource("10_5pm8n")
 font_size = 30
@@ -50,6 +47,31 @@ font_size = 40
 [sub_resource type="LabelSettings" id="LabelSettings_ebxql"]
 font = ExtResource("10_5pm8n")
 font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_t0byw"]
+font = ExtResource("10_5pm8n")
+font_size = 33
+
+[sub_resource type="Animation" id="Animation_t0h47"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tf31k"]
+_data = {
+"bounce": SubResource("Animation_t0h47")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_ova1h"]
 font = ExtResource("10_5pm8n")
@@ -119,6 +141,10 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="LabelSettings" id="LabelSettings_ih6c6"]
+font = ExtResource("10_5pm8n")
+font_size = 30
+
 [node name="main_map" type="Node2D"]
 script = ExtResource("1_y20xl")
 
@@ -173,29 +199,6 @@ marker_type = 1
 
 [node name="Bird" parent="NavigationRegion2D/birds" instance=ExtResource("2_qfris")]
 position = Vector2(593, 348)
-
-[node name="BirdCoinGUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 14.0
-offset_top = 655.0
-offset_right = 54.0
-offset_bottom = 695.0
-
-[node name="BirdCoinCount" type="Label" parent="BirdCoinGUI"]
-layout_mode = 2
-offset_left = 94.0
-offset_top = -16.0
-offset_right = 111.0
-offset_bottom = 29.0
-size_flags_vertical = 1
-text = "0"
-label_settings = SubResource("LabelSettings_ih6c6")
-
-[node name="Sprite2D" type="Sprite2D" parent="BirdCoinGUI"]
-position = Vector2(46, 6)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_jqa5o")
 
 [node name="TimeArea" type="Control" parent="."]
 layout_mode = 3
@@ -529,6 +532,28 @@ offset_bottom = 449.948
 rotation = -0.0657627
 scale = Vector2(1.4, 1.4)
 
+[node name="Arrow" type="Polygon2D" parent="DayEndPopup/EmployeeManagement"]
+position = Vector2(-829.586, -44.6601)
+rotation = -0.0281594
+polygon = PackedVector2Array(848, 330, 849, 309, 843, 312, 854, 296, 864, 312, 857, 309, 858, 331)
+
+[node name="Click to Hire!" type="Label" parent="DayEndPopup/EmployeeManagement"]
+layout_mode = 0
+offset_left = -58.9067
+offset_top = 252.759
+offset_right = 141.093
+offset_bottom = 304.759
+pivot_offset = Vector2(100, 30)
+text = "Click to hire!"
+label_settings = SubResource("LabelSettings_t0byw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DayEndPopup/EmployeeManagement/Click to Hire!"]
+libraries = {
+"": SubResource("AnimationLibrary_tf31k")
+}
+
 [node name="NextDay" type="Control" parent="DayEndPopup"]
 anchors_preset = 0
 
@@ -696,12 +721,13 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -182.0
-offset_top = 127.0
+offset_top = 113.0
 offset_right = 182.0
-offset_bottom = 193.0
+offset_bottom = 212.0
 grow_horizontal = 2
 text = "Do you want to hire a new delivery stork? 
-It will cost you 100     ."
+It will cost you 100     .
+You can buy on credit, though!"
 label_settings = ExtResource("7_gfot6")
 horizontal_alignment = 1
 
@@ -730,6 +756,29 @@ text = "CANCEL"
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_kt7bk")
+
+[node name="BirdCoinGUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 14.0
+offset_top = 655.0
+offset_right = 54.0
+offset_bottom = 695.0
+
+[node name="BirdCoinCount" type="Label" parent="BirdCoinGUI"]
+layout_mode = 2
+offset_left = 94.0
+offset_top = -16.0
+offset_right = 111.0
+offset_bottom = 29.0
+size_flags_vertical = 1
+text = "0"
+label_settings = SubResource("LabelSettings_ih6c6")
+
+[node name="Sprite2D" type="Sprite2D" parent="BirdCoinGUI"]
+position = Vector2(46, 6)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_jqa5o")
 
 [connection signal="marker_spawned" from="NavigationRegion2D/BabySpawner" to="." method="_on_baby_spawner_marker_spawned"]
 [connection signal="baby_delivered" from="NavigationRegion2D/birds/Bird" to="." method="_on_bird_baby_delivered"]
